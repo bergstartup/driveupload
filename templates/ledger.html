@@ -1,0 +1,137 @@
+r>{% extends "layout.html" %}
+
+{% block code %}
+<body style="background:white;">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" style="color:white;" href="ledger/ /{{lcode}}">LEDGER</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                   <a data-toggle="modal" data-target="#myModal">Upload <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></a>
+                </li>
+                <li>
+                   <a data-toggle="modal" data-target="#myModal2">Logout <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span></a>
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+        
+       <!-- <form action = "{{ url_for('addrec') }}" method = "POST">
+         <h3>ADD FILES</h3>
+         sno<br>
+         <input type = "text" name = "sno" /></br>
+         
+         tag<br>
+         <input type = "text" name = "tag" /><br>
+         
+         file<br>
+         <input type = "text" name = "file" /><br>
+         <input type = "submit" value = "submit" /><br>
+      </form>-->
+      <div class="container">
+        <div class="row">
+           
+            <table class="table table-striped">
+                <tr style="background:white">
+                    <th style="color:green;">
+                        <h5>{{msg}}</h5>
+                    </th>
+                    <th>
+                    </th>
+                    <form action = "{{ url_for('search') }}" method = "POST">
+                        <th>
+                            <input style="width:100%" type="text" class="form-control" placeholder="Search using tag" name="tag">
+                        </th>
+                        <th>
+                                <button style="padding:8px" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                        </th>
+                    </form>
+                </tr>
+                <tr>
+                    <th>#</th>
+                    <th>Tag</th>
+                    <th>Date</th>
+                    <th>File</th>
+                </tr>
+                {% for i in data %}
+                <tr>
+                    <td>{{i[0]}}</td>
+                    <td>{{i[1]}}</td>
+                    <td>{{i[2]}}</td>
+                    <td>{{i[3]}}</td>
+                </tr>
+                {% endfor %}
+                 
+            </table>
+        </div>
+      </div>
+
+
+
+
+      <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Upload your file</h4>
+              </div>
+              <form action = "{{ url_for('addrec') }}" method = "POST" enctype="multipart/form-data">
+                  <div class="modal-body">
+                     <!--sno<br>
+                     <input type = "text" name = "sno" /></br>-->
+                     
+                     <label for="exampleInputFile">Tag</label><br>
+                     <input type = "text" name = "tag" /><br><br>
+                     
+                     <label for="exampleInputFile">File input</label>
+                     <input type="file" name="file" id="exampleInputFile">
+                     <!--<input type = "submit" value = "submit" /><br>-->
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button class="btn btn-success" type="submit">Submit</button>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal2 -->
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">WARNING</h4>
+              </div>
+              <form action = "{{ url_for('logout') }}" method = "POST">
+                  <div class="modal-body">
+                    <h5>Are you sure you want to logout?</h5>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-danger pull-left" type="submit">Confirm</button>
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+{% endblock code %}<span

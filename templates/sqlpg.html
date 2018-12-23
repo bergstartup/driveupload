@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block code %}
+<body>  
+    <div class="container">
+        <h1 style="text-align:center;">SQL CMD<h1>
+        <form method="POST" action = "{{ url_for('sqlcmd') }}">
+            <input style="margin-top:50px" type="text" class="form-control" name="cmd" placeholder="Enter cmd here"/>
+            <input type="submit" class="btn btn-success" name="submit" value="EXECUTE" style="margin-top:20px"/>
+        <form>
+        <h5>{{msg}}</h5>
+        {% for i in data %}
+            <h4>{{i}}</h4>
+        {% endfor %}
+    </div>
+</body>
+{% endblock code %}
