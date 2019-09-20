@@ -1,4 +1,4 @@
-# driveupload
+# Gdrive upload logger
 It takes log of drive upload
 
 
